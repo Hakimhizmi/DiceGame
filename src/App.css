@@ -1,0 +1,398 @@
+:root {
+    --gap: 4px;
+    --background-page: #1a2c38;
+    --background-container: #213743;
+    --background-box: #2c4253;
+    --color-line: #666;
+    --color-font: #444;
+    --columns: 3;
+    --border-radius: 3px;
+    --font-size: 18px;
+    --font-family: Arial;
+    --transition-duration: 600ms;
+    --transition-style: ease-in-out;
+    --container-max-width: 640px;
+  }
+  body {
+    background: var(--background-page);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--color-font);
+  }
+  p.warning {
+    text-align: center;
+    line-height: 2;
+    margin: 0 auto;
+    font-size: 14px;
+    max-width: var(--container-max-width);
+    color: #fff;
+  }
+  p.warning a {
+      background: #45ba04;
+      color: #fff;
+      padding: .2rem .7rem;
+      border-radius: 3px;
+      white-space: nowrap;
+      text-decoration: none;
+  }
+  p.warning a.more:hover {
+        background: #3bacff;
+  }
+  .container {
+    scale: 0.9;
+    background: var(--background-container);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 0px 10px 10px 0px;  
+    margin-left: 41.9%;
+    margin-top: 0.1em;
+    max-width: var(--container-max-width);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between; /* Horizontal spacing between the entries. */
+    padding: var(--gap) var(--gap) calc(var(--gap)/2) var(--gap); /* The external spacing of the container. */
+    overflow: hidden; /* Prevents .corner::before to be visible outside the margins of the container. */
+  }
+  .entry {
+    width: calc((100% / var(--columns)) - calc(var(--gap)/2)); /* Column width must take into account the desired gap. */
+    margin-bottom: calc(var(--gap)/2); /* Vertical spacing between the entries. */
+    position: relative; /* This is required, to contain .corner::before within the margins of it's parent. */
+  }
+  .entry-content {
+    display: grid;
+    place-items: center;
+    min-height: clamp( 1em, calc(100vw/var(--columns)), calc(var(--container-max-width)/var(--columns)) );
+    background: var(--background-box);
+    transition: all var(--transition-duration) var(--transition-style);
+    pointer-events: none; /* When hovering over an entry, ignore this element, even if its on the foreground. */
+    z-index: 1; /* The content div should have a higher z-index than the .corner::before. */ 
+    position: relative; /* z-index would have no effect without a specific position. */
+  }
+  .entry:hover .entry-content {
+    background: var(--background-container);
+    color: var(--color-line);
+  }
+  .corner-container { /* The corner container should cover the entire entry. */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+  .corner { /* Each corner should cover 1/4 of an entry. */
+    position: absolute;
+    width: 50%;
+    height: 50%;
+  }
+  .corner::before { /* The cross shape is just a big box positioned behind the entries. */
+    content: '';
+    display: block;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    transition: opacity var(--transition-duration) var(--transition-style);
+    background: radial-gradient(var(--color-line) 0, transparent 70%);
+    pointer-events: none; 
+  }
+  .corner:hover::before {
+    opacity: 1;
+  }
+  .corner:nth-child(1) {
+    left: 0;
+    top: 0;
+  }
+  .corner:nth-child(1)::before {
+    left: -100%;
+    top: -100%;
+  }
+  .corner:nth-child(2) {
+    right: 0;
+    top: 0;
+  }
+  .corner:nth-child(2)::before {
+    right: -100%;
+    top: -100%;
+  }
+  .corner:nth-child(3) {
+    left: 0;
+    bottom: 0;
+  }
+  .corner:nth-child(3)::before {
+    left: -100%;
+    bottom: -100%;
+  }
+  .corner:nth-child(4) {
+    right: 0;
+    bottom: 0;
+  }
+  .corner:nth-child(4)::before {
+    right: -100%;
+    bottom: -100%;
+  }
+  
+  img{
+    margin-left: -40px;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+  h1{
+    font-family: 'Cinzel', serif;
+    font-size: xx-large;
+   color: whitesmoke;
+   scale: 1.6;
+   padding: 40.8%;
+   animation: shake 0.9s;
+   animation-iteration-count: infinite;
+  }
+
+h1:hover{
+  scale: 1.9;
+}
+img{
+  animation: shake 0.9s;
+  animation-iteration-count: 4s;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+
+
+
+
+
+.login-box {
+  position: absolute;
+  top: 57.3%;
+  left: 30.8%;
+  width: 400px;
+  height: 81%;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: #213743;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px  rgba(0,0,0,.6);
+  border-radius: 10px 0px 0px 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+
+
+.score{
+  width: 40%;
+  height: 60px;
+  margin: auto;
+  background: #213743;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px  rgba(0,0,0,.6);
+  border-radius: 20px ;
+  
+}
+
+h2{
+  font-family: 'Cinzel', serif;
+  font-size: xx-large;
+ color: whitesmoke;
+ margin-left: 34%;
+ padding-top: 8px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+h6{
+  font-family: 'Poor Story', cursive;
+  color: rgba(240, 248, 255, 0.712);
+  font-size:large;
+  margin-top: 53%;
+}
+  
+
+
+@media (max-width: 600px) {
+  .container{
+    position: absolute;
+    margin-top: 150%;
+    width: 100%;
+    right: 0%;
+    height: 60%;
+   
+  }
+  .login-box{
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    margin-left: 20%;
+  }
+  h6{
+    position: absolute;
+    margin-top: 140%;
+    margin-left: 20%;
+  }
+  .score{
+    width: 100%;
+  }
+  .score h2{
+    position: relative;
+    width: 100%;
+    margin-left: 15%;
+  }
+  .entry img{
+    width: 200px;
+  }
+}
