@@ -1,3 +1,8 @@
+# Play Dice game
+
+![dice](https://user-images.githubusercontent.com/45130772/212560914-3996c1f1-3037-4bfb-afac-274d533d662f.gif)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
